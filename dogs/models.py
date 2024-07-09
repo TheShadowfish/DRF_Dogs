@@ -47,22 +47,11 @@ class Dog(models.Model):
     date_born = models.DateField(
         **NULLABLE, verbose_name="Дата рождения", help_text="Укажите дату рождения"
     )
-    count_views = models.PositiveBigIntegerField(
-        verbose_name="Счетчик просмотров",
-        help_text="Укажите количество просмотров",
-        default=0,
-    )
-    owner = models.ForeignKey(D_user, verbose_name='Владелец', help_text='Укажите владельца собаки', **NULLABLE, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Собака"
         verbose_name_plural = "Собаки"
-        ordering = ["breed", "name"]
-        permissions=[
-            ("can_edit_breed", "Can edit breed"),
-            ("can_edit_description", "Can edit description"),
 
-        ]
 
     def __str__(self):
         return self.name

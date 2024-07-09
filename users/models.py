@@ -1,4 +1,5 @@
 from django.contrib.auth.base_user import BaseUserManager
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -41,7 +42,7 @@ class User(AbstractUser):
 
     username = None
     email = models.EmailField(
-        unigue=True, verbose_name="Почта", help_text="Укажите почту"
+        unique=True, verbose_name="Почта", help_text="Укажите почту"
     )
     phone = models.CharField(
         max_length=35, **NULLABLE, verbose_name="Телефон", help_text="Укажите телефон"
@@ -65,9 +66,6 @@ class User(AbstractUser):
     class Meta:
         verbose_name = "пользователь"
         verbose_name_plural = "пользователи"
-        permissions = [
-            ("can_set_user_inactive", "Can blocked user (bool is_active = False)"),
-        ]
 
     def __str__(self):
         return f"{self.name} ({self.email})"
