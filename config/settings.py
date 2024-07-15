@@ -1,4 +1,5 @@
 import os.path
+from datetime import timedelta
 from pathlib import Path
 from decouple import config
 
@@ -26,6 +27,7 @@ INSTALLED_APPS = [
     "users",
     "dogs",
     "django_filters",
+    'rest_framework_simplejwt',
 
 ]
 
@@ -118,5 +120,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
+#  'rest_framework.permissions.IsAuthenticated',
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }

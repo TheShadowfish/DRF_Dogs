@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 NULLABLE = {"blank": True, "null": True}
 
 
@@ -12,6 +14,13 @@ class Breed(models.Model):
     breed = models.TextField(
         verbose_name="Описание породы", help_text="Введите описание породы", **NULLABLE
     )
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        **NULLABLE,
+        verbose_name="Владелец",
+        help_text="Укажите владельца"
+    )
 
     class Meta:
         verbose_name = "Порода"
@@ -22,6 +31,15 @@ class Breed(models.Model):
 
 
 class Dog(models.Model):
+
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        **NULLABLE,
+        verbose_name="Владелец",
+        help_text="Укажите владельца собаки"
+    )
+
     name = models.CharField(
         max_length=100, verbose_name="Кличка", help_text="Введите кличку собаки"
     )
@@ -34,9 +52,7 @@ class Dog(models.Model):
         related_name="dogs"
     )
     description = models.TextField(
-        verbose_name="Описание собаки",
-        help_text="Введите описание собаки",
-        **NULLABLE
+        verbose_name="Описание собаки", help_text="Введите описание собаки", **NULLABLE
     )
     photo = models.ImageField(
         upload_to="dogs/photo",
@@ -51,7 +67,6 @@ class Dog(models.Model):
     class Meta:
         verbose_name = "Собака"
         verbose_name_plural = "Собаки"
-
 
     def __str__(self):
         return self.name
