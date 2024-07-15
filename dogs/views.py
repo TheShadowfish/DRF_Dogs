@@ -4,7 +4,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 
 from dogs.models import Dog, Breed
-from dogs.serializers import DogSerializer, BreedSerializer, DogDetailSerializer
+from dogs.serializers import DogSerializer, BreedSerializer, DogDetailSerializer, DogSerializerCreateUpdate
 
 
 class DogViewSet(ModelViewSet):
@@ -18,12 +18,25 @@ class DogViewSet(ModelViewSet):
     def get_serializer_class(self):
         if self.action == "retrieve":
             return DogDetailSerializer
+        if self.action == "create" or self.action == "update":
+            return DogSerializerCreateUpdate
+
         return DogSerializer
+
+    def perform_create(self, serializer):
+        dog = serializer.save()
+        dog.owner = self.request.user
+        dog.save()
 
 
 class BreedCreateAPIView(CreateAPIView):
     queryset = Breed.objects.all()
     serializer_class = BreedSerializer
+
+    def perform_create(self, serializer):
+        breed = serializer.save(owner=self.request.user)
+        # breed.owner = self.request.user
+        # breed.save()
 
 
 class BreedListAPIView(ListAPIView):

@@ -21,6 +21,11 @@ class DogSerializer(ModelSerializer):
         model = Dog
         fields = "__all__"
 
+class DogSerializerCreateUpdate(ModelSerializer):
+    class Meta:
+        model = Dog
+        fields = "__all__"
+
 
 class DogDetailSerializer(ModelSerializer):
     count_dog_with_same_breed = SerializerMethodField()
