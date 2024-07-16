@@ -29,10 +29,12 @@ class DogViewSet(ModelViewSet):
         dog.save()
 
     def get_permissions(self):
-        if self.action in ["create", "destroy"]:
-            self.permission_classes = (~IsModer,)
-        elif self.action in ["update", "retrieve"]:
-            self.permission_classes = (IsModer,)
+        if self.request.user.groups.filter(name="moders").exists():
+
+            if self.action in ["create", "destroy"]:
+                self.permission_classes = (~IsModer,)
+            elif self.action in ["update", "retrieve"]:
+                self.permission_classes = (IsModer,)
         return super().get_permissions()
 
 
