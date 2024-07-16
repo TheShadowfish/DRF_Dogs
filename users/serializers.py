@@ -6,8 +6,9 @@ from users.models import User
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'email', 'phone', 'tg_nick', 'avatar', 'groups', 'user_permissions', 'is_superuser', 'is_staff',)
-
+        fields = "__all__"
+        # если ограничить поля то пользователь создается некорректно и зайти под ним нельзя. ХЗ что с этим делать. Пароль ДОЛЖЕН БЫТЬ в выводе.
+        #  ('id', 'email', 'phone', 'tg_nick', 'avatar', 'groups', 'user_permissions', 'is_superuser', 'is_staff',)
         """
             "id": 1,
     "password": "pbkdf2_sha256$600000$FAVGVNT2SttB55I38wFVD9$erJIMRLv0dO/e73RrLyuzVNaZZTVQSMVWULv+PYUsNY=",

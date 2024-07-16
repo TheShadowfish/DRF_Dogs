@@ -19,9 +19,8 @@ class DogViewSet(ModelViewSet):
     def get_serializer_class(self):
         if self.action == "retrieve":
             return DogDetailSerializer
-        if self.action == "create" or self.action == "update":
+        if self.action in ["create", "update"]:
             return DogSerializerCreateUpdate
-
         return DogSerializer
 
     def perform_create(self, serializer):
@@ -29,12 +28,12 @@ class DogViewSet(ModelViewSet):
         dog.owner = self.request.user
         dog.save()
 
-    # def get_permissions(self):
-    #     if self.action == ["create", "destroy"]:
-    #         self.permission_classes = (~IsModer,)
-    #     elif self.action == ["update", "retrieve"]:
-    #         self.permission_classes = (IsModer,)
-    #     return super().get_permissions()
+    def get_permissions(self):
+        if self.action in ["create", "destroy"]:
+            self.permission_classes = (~IsModer,)
+        elif self.action in ["update", "retrieve"]:
+            self.permission_classes = (IsModer,)
+        return super().get_permissions()
 
 
 class BreedCreateAPIView(CreateAPIView):

@@ -60,5 +60,25 @@
       "groups": [],
       "user_permissions": []
     }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$140EUaEHD3PVvHXaks9HVM$1H8COk48VSz09ssbL1KZdLT+3pJtRAabHRLmO+k4ZVI=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-16T07:05:05.558Z",
+      "email": "nomoder2@sky.pro",
+      "phone": null,
+      "tg_nick": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
   }
 ]
