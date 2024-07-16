@@ -5,6 +5,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView,
 
 from dogs.models import Dog, Breed
 from dogs.serializers import DogSerializer, BreedSerializer, DogDetailSerializer, DogSerializerCreateUpdate
+from users.permissions import IsModer
 
 
 class DogViewSet(ModelViewSet):
@@ -27,6 +28,13 @@ class DogViewSet(ModelViewSet):
         dog = serializer.save()
         dog.owner = self.request.user
         dog.save()
+
+    # def get_permissions(self):
+    #     if self.action == ["create", "destroy"]:
+    #         self.permission_classes = (~IsModer,)
+    #     elif self.action == ["update", "retrieve"]:
+    #         self.permission_classes = (IsModer,)
+    #     return super().get_permissions()
 
 
 class BreedCreateAPIView(CreateAPIView):

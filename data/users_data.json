@@ -1,1 +1,64 @@
-[{"model": "users.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$600000$2Svw6CiyOUxtMbp5oZc6Vf$9wM5/PRhkgw9/kvfPg35pe5VYFMTYO8st0wRw9mcx/8=", "last_login": null, "is_superuser": true, "first_name": "Admin", "last_name": "SkyPro", "is_staff": true, "is_active": true, "date_joined": "2024-07-15T18:12:28.573Z", "email": "admin@sky.pro", "phone": null, "tg_nick": null, "avatar": "", "groups": [], "user_permissions": []}}]
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$FAVGVNT2SttB55I38wFVD9$erJIMRLv0dO/e73RrLyuzVNaZZTVQSMVWULv+PYUsNY=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-15T12:10:57Z",
+      "email": "test@sky.pro",
+      "phone": null,
+      "tg_nick": null,
+      "avatar": "",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$drf1txIBhlC0nHeUk6R77E$6NB91+cIpOBXK1lm99B8NVJcAIH4g8dty97Vw3l2rlI=",
+      "last_login": "2024-07-15T13:33:49.336Z",
+      "is_superuser": true,
+      "first_name": "Admin",
+      "last_name": "SkyPro",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-07-15T13:32:47.582Z",
+      "email": "admin@sky.pro",
+      "phone": null,
+      "tg_nick": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$Q77ObL6p5WTrlsGFiwbJeE$EeyQKQABWeayDJtIah6Kn2wWL/XP/eHcyPumTmZ+i2Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-16T06:58:20.717Z",
+      "email": "nomoder@sky.pro",
+      "phone": null,
+      "tg_nick": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
