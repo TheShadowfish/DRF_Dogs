@@ -1,10 +1,11 @@
 from rest_framework.fields import SerializerMethodField
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
 from dogs.models import Dog, Breed
+from dogs.validators import validate_forbidden_words
 
 
-class BreedSerializer(ModelSerializer):
+class BreedSerializer(serializers.ModelSerializer):
     dogs = SerializerMethodField()
 
     def get_dogs(self, obj):
@@ -15,21 +16,27 @@ class BreedSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class DogSerializer(ModelSerializer):
+class DogSerializer(serializers.ModelSerializer):
     breed = BreedSerializer(read_only=True)
+    name = serializers.CharField(validators=[validate_forbidden_words])
+
     class Meta:
         model = Dog
         fields = "__all__"
 
-class DogSerializerCreateUpdate(ModelSerializer):
+
+class DogSerializerCreateUpdate(serializers.ModelSerializer):
+
+    name = serializers.CharField(validators=[validate_forbidden_words])
     class Meta:
         model = Dog
         fields = "__all__"
 
 
-class DogDetailSerializer(ModelSerializer):
+class DogDetailSerializer(serializers.ModelSerializer):
     count_dog_with_same_breed = SerializerMethodField()
     breed = BreedSerializer(read_only=True)
+    name = serializers.CharField(validators=[validate_forbidden_words])
 
     def get_count_dog_with_same_breed(self, obj):
         return Dog.objects.filter(breed=obj.breed).count()
@@ -37,5 +44,3 @@ class DogDetailSerializer(ModelSerializer):
     class Meta:
         model = Dog
         fields = ('name', 'breed', 'description', 'photo', 'date_born', 'count_dog_with_same_breed')
-
-

@@ -1,1 +1,22 @@
-[{"model": "users.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$600000$2Svw6CiyOUxtMbp5oZc6Vf$9wM5/PRhkgw9/kvfPg35pe5VYFMTYO8st0wRw9mcx/8=", "last_login": null, "is_superuser": true, "first_name": "Admin", "last_name": "SkyPro", "is_staff": true, "is_active": true, "date_joined": "2024-07-15T18:12:28.573Z", "email": "admin@sky.pro", "phone": null, "tg_nick": null, "avatar": "", "groups": [], "user_permissions": []}}]
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$2Svw6CiyOUxtMbp5oZc6Vf$9wM5/PRhkgw9/kvfPg35pe5VYFMTYO8st0wRw9mcx/8=",
+      "last_login": null,
+      "is_superuser": true,
+      "first_name": "Admin",
+      "last_name": "SkyPro",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-07-15T18:12:28.573Z",
+      "email": "admin@sky.pro",
+      "phone": null,
+      "tg_nick": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
