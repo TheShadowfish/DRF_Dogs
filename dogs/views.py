@@ -5,6 +5,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 
 from dogs.models import Dog, Breed
+from dogs.paginations import CustomPagination
 from dogs.serializers import DogSerializer, BreedSerializer, DogDetailSerializer, DogSerializerCreateUpdate
 from users.permissions import IsModer, IsOwner
 
@@ -15,7 +16,7 @@ class DogViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ('date_born',)
     search_fields = ('name',)
-
+    pagination_class = CustomPagination
 
     def get_serializer_class(self):
         if self.action == "retrieve":
@@ -57,6 +58,7 @@ class BreedCreateAPIView(CreateAPIView):
 class BreedListAPIView(ListAPIView):
     queryset = Breed.objects.all()
     serializer_class = BreedSerializer
+    pagination_class = CustomPagination
 
 
 class BreedRetrieveAPIView(RetrieveAPIView):
@@ -75,5 +77,3 @@ class BreedDestroyAPIView(DestroyAPIView):
     queryset = Breed.objects.all()
     serializer_class = BreedSerializer
     permission_classes = (IsOwner | ~IsModer, IsAuthenticated)
-
-
