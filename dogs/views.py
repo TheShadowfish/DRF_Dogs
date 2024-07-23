@@ -45,7 +45,7 @@ class DogViewSet(ModelViewSet):
 
 
 class BreedCreateAPIView(CreateAPIView):
-    permission_classes = (IsModer, IsAuthenticated)
+    permission_classes = (IsModer | IsAuthenticated,)
     queryset = Breed.objects.all()
     serializer_class = BreedSerializer
 

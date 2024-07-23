@@ -33,3 +33,119 @@ class DogTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Dog.objects.all().count(), 2)
 
+    def test_dog_update(self):
+        url = reverse("dogs:dog-detail", args=(self.dog.pk,))
+        data = {"name": "Форест"}
+        response = self.client.patch(url, data)
+
+        data = response.json()
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(data.get('name'), "Форест")
+
+    def test_dog_delete(self):
+        url = reverse("dogs:dog-detail", args=(self.dog.pk,))
+        response = self.client.delete(url)
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Dog.objects.all().count(), 0)
+
+    def test_dog_list(self):
+        url = reverse("dogs:dog-list")
+        response = self.client.get(url)
+
+        data = response.json()
+        # print(data)
+
+        result = {'count': 1, 'next': None, 'previous': None, 'results':
+            [
+                {'id': self.dog.pk,
+                 'breed':
+                     {'id': self.breed.pk,
+                      'dogs': [self.dog.name],
+                      'name': self.breed.name,
+                      'breed': self.breed.breed,
+                      'owner': None
+                      },
+                 'name': self.dog.name,
+                 'description': None,
+                 'photo': None,
+                 'date_born': None,
+                 'owner': self.user.pk
+                 }
+            ]
+                  }
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(data, result)
+
+
+class BreedTestCase(APITestCase):
+
+    def setUp(self):
+        self.user = User.objects.create(email="admin@sky.pro")
+        self.breed = Breed.objects.create(name='Лабрадор', breed="Большая мохнатая красивая белая собака", owner=self.user)
+        self.dog = Dog.objects.create(name="Гром", breed=self.breed, owner=self.user)
+        self.client.force_authenticate(user=self.user)
+
+    def test_breed_retrieve(self):
+        url = reverse("dogs:breeds-retrieve", args=(self.breed.pk,))
+        response = self.client.get(url)
+        data = response.json()
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(data.get('name'), self.breed.name)
+
+    def test_breed_create(self):
+        url = reverse("dogs:breeds-create")
+        data = {
+            "name": "Овчарка"
+                }
+        response = self.client.post(url, data)
+
+        data = response.json()
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Dog.objects.all().count(), 1)
+
+    def test_breed_update(self):
+        url = reverse("dogs:breeds-update", args=(self.breed.pk,))
+        data = {"name": "Лайка"}
+        response = self.client.patch(url, data)
+
+        data = response.json()
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(data.get('name'), "Лайка")
+
+    def test_breed_delete(self):
+        url = reverse("dogs:breeds-delete", args=(self.breed.pk,))
+        response = self.client.delete(url)
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Breed.objects.all().count(), 0)
+
+    def test_breed_list(self):
+        url = reverse("dogs:breeds-list")
+        response = self.client.get(url)
+
+        data = response.json()
+        # print(data)
+
+        result = {
+            'count': 1,
+            'next': None,
+            'previous': None,
+            'results':
+                [
+                    {'id': self.breed.pk,
+                     'dogs': [self.dog.name],
+                     'name': self.breed.name,
+                     'breed': self.breed.breed,
+                     'owner': self.user.pk
+                     }
+                ]}
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(data, result)
+

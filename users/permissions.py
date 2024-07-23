@@ -1,5 +1,6 @@
 from rest_framework import permissions
 
+
 class IsModer(permissions.BasePermission):
     """Проверяет является ли пользователь модератором"""
 
@@ -7,6 +8,7 @@ class IsModer(permissions.BasePermission):
         # print (str(request.user.groups.filter(name="moders").exists()))
         # print(f"IsModer= {request.user.groups.filter(name='moders').exists()}")
         return request.user.groups.filter(name="moders").exists()
+
 
 class IsOwner(permissions.BasePermission):
     """Проверяет является ли пользователь владельцем"""
