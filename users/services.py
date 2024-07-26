@@ -6,9 +6,15 @@ stripe.api_key = STRIPE_API_KEY
 
 def convert_rub_to_dollars(amount):
     """Конвертирует рубли в доллары"""
+
+    # Отказывается работать
     c = CurrencyRates()
     rate = c.get_rate('RUB', 'USD')
     return int(amount * rate)
+
+    # а так - все работает. Что с theforexapi.com?
+    # return int(amount/85.875)
+
 
 
 def create_stripe_price(amount):
