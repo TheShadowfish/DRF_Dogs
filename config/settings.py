@@ -22,12 +22,13 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",
+    "django.contrib.staticfiles",  # required for serving swagger ui's css/js files
     "rest_framework",
     "users",
     "dogs",
     "django_filters",
     'rest_framework_simplejwt',
+    'drf_yasg',
 
 ]
 
@@ -135,3 +136,5 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
+
+STRIPE_API_KEY = config("STRIPE_API_KEY")

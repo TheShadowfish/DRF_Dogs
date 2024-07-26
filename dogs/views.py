@@ -1,4 +1,6 @@
+from django.utils.decorators import method_decorator
 from django_filters.rest_framework import DjangoFilterBackend
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import filters
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
@@ -9,7 +11,9 @@ from dogs.paginations import CustomPagination
 from dogs.serializers import DogSerializer, BreedSerializer, DogDetailSerializer, DogSerializerCreateUpdate
 from users.permissions import IsModer, IsOwner
 
-
+@method_decorator(name='list', decorator=swagger_auto_schema(
+    operation_description="description from swagger_auto_schema via method_decorator"
+))
 class DogViewSet(ModelViewSet):
     queryset = Dog.objects.all()
     filterset_fields = ('breed',)
