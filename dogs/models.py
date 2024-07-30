@@ -63,7 +63,7 @@ class Dog(models.Model):
     date_born = models.DateField(
         **NULLABLE, verbose_name="Дата рождения", help_text="Укажите дату рождения"
     )
-    like = models.ManyToManyField(
+    likes = models.ManyToManyField(
         User,
         **NULLABLE,
         verbose_name="Лайки",

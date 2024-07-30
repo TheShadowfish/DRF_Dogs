@@ -12,6 +12,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView,
 from dogs.models import Dog, Breed
 from dogs.paginations import CustomPagination
 from dogs.serializers import DogSerializer, BreedSerializer, DogDetailSerializer, DogSerializerCreateUpdate
+from dogs.tasks import send_information_about_like
 from users.permissions import IsModer, IsOwner
 
 
@@ -36,7 +37,7 @@ class DogViewSet(ModelViewSet):
         return DogSerializer
 
     def perform_create(self, serializer):
-        dog = serializer.save(owner=self.request.user.pk)
+        dog = serializer.save(owner=self.request.user)
     #     dog.owner = self.request.user
     #     dog.save()
     # def perform_create(self, serializer):
@@ -72,8 +73,10 @@ class DogViewSet(ModelViewSet):
         dog = get_object_or_404(Dog, pk=pk)
         if dog.likes.filter(pk=request.user.pk).exists():
             dog.likes.remove(request.user)
+            # send_information_about_like.delay()
         else:
             dog.likes.add(request.user)
+            send_information_about_like.delay(dog.owner.email)
         serializer = self.get_serializer(dog)
         return Response(data=serializer.data)
 

@@ -138,3 +138,27 @@ SIMPLE_JWT = {
 }
 
 STRIPE_API_KEY = config("STRIPE_API_KEY")
+
+# Celery Configuration Options
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+# set the celery broker url
+CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+
+# set the celery result backend
+CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')
+
+# set the celery timezone
+CELERY_TIMEZONE = 'UTC'
+
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS') == 'True'
+EMAIL_USE_SSL = config('EMAIL_USE_SSL') == 'True'
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
