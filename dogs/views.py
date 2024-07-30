@@ -2,14 +2,20 @@ from django.utils.decorators import method_decorator
 from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import filters
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView, \
+    get_object_or_404
 
 from dogs.models import Dog, Breed
 from dogs.paginations import CustomPagination
 from dogs.serializers import DogSerializer, BreedSerializer, DogDetailSerializer, DogSerializerCreateUpdate
 from users.permissions import IsModer, IsOwner
+
+
+
 
 @method_decorator(name='list', decorator=swagger_auto_schema(
     operation_description="description from swagger_auto_schema via method_decorator"
@@ -46,6 +52,17 @@ class DogViewSet(ModelViewSet):
         elif self.action != "create":
             self.permission_classes = (IsOwner,)
         return super().get_permissions()
+
+
+    @action(detail=True, methods=("post",))
+    def likes(self, request, pk):
+        dog = get_object_or_404(Dog, pk=pk)
+        if dog.likes.filter(pk=request.user.pk).exists():
+            dog.likes.remove(request.user)
+        else:
+            dog.likes.add(request.user)
+        serializer = self.get_serializer(dog)
+        return Response(data=serializer.data)
 
 
 class BreedCreateAPIView(CreateAPIView):
