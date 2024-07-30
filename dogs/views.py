@@ -36,22 +36,35 @@ class DogViewSet(ModelViewSet):
         return DogSerializer
 
     def perform_create(self, serializer):
-        dog = serializer.save()
-        dog.owner = self.request.user
-        dog.save()
+        dog = serializer.save(owner=self.request.user.pk)
+    #     dog.owner = self.request.user
+    #     dog.save()
+    # def perform_create(self, serializer):
+    #     breed = serializer.save(owner=self.request.user)
+    #     # breed.owner = self.request.user
+    #     # breed.save()
 
     def get_permissions(self):
+        if self.action == "create":
+            self.permission_classes = (~IsModer,)
+        elif self.action in ["update", "retrieve"]:
+            self.permission_classes = (IsModer | IsOwner,)
+        elif self.action == "destroy":
+            self.permission_classes = (~IsModer | IsOwner,)
+        return super().get_permissions()
+
+
         # почему-то удалять отказывался собаку у простого пользователя (не модератора)
         # а создавал без проблем
-        if self.request.user.groups.filter(name="moders").exists():
-
-            if self.action in ["create", "destroy"]:
-                self.permission_classes = (~IsModer,)
-            elif self.action in ["update", "retrieve"]:
-                self.permission_classes = (IsModer,)
-        elif self.action != "create":
-            self.permission_classes = (IsOwner,)
-        return super().get_permissions()
+        # if self.request.user.groups.filter(name="moders").exists():
+        #
+        #     if self.action in ["create", "destroy"]:
+        #         self.permission_classes = (~IsModer,)
+        #     elif self.action in ["update", "retrieve"]:
+        #         self.permission_classes = (IsModer,)
+        # elif self.action != "create":
+        #     self.permission_classes = (IsOwner,)
+        # return super().get_permissions()
 
 
     @action(detail=True, methods=("post",))
