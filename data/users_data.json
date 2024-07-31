@@ -3,14 +3,36 @@
     "model": "users.user",
     "pk": 1,
     "fields": {
-      "password": "pbkdf2_sha256$600000$2Svw6CiyOUxtMbp5oZc6Vf$9wM5/PRhkgw9/kvfPg35pe5VYFMTYO8st0wRw9mcx/8=",
-      "last_login": "2024-07-15T18:13:46.218Z",
+      "password": "pbkdf2_sha256$600000$FAVGVNT2SttB55I38wFVD9$erJIMRLv0dO/e73RrLyuzVNaZZTVQSMVWULv+PYUsNY=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-15T12:10:57Z",
+      "email": "test@sky.pro",
+      "phone": null,
+      "tg_nick": null,
+      "avatar": "",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$drf1txIBhlC0nHeUk6R77E$6NB91+cIpOBXK1lm99B8NVJcAIH4g8dty97Vw3l2rlI=",
+      "last_login": "2024-07-15T13:33:49.336Z",
       "is_superuser": true,
       "first_name": "Admin",
       "last_name": "SkyPro",
       "is_staff": true,
       "is_active": true,
-      "date_joined": "2024-07-15T18:12:28.573Z",
+      "date_joined": "2024-07-15T13:32:47.582Z",
       "email": "admin@sky.pro",
       "phone": null,
       "tg_nick": null,
@@ -21,22 +43,122 @@
   },
   {
     "model": "users.user",
-    "pk": 2,
+    "pk": 3,
     "fields": {
-      "password": "pbkdf2_sha256$600000$cue0KRYEWo1VDZsiBN6ROH$hyo69nuGfmJUfmAsw1Aq3oq48qvlHnwwplwuCdReESs=",
+      "password": "pbkdf2_sha256$600000$Q77ObL6p5WTrlsGFiwbJeE$EeyQKQABWeayDJtIah6Kn2wWL/XP/eHcyPumTmZ+i2Y=",
       "last_login": null,
       "is_superuser": false,
       "first_name": "",
       "last_name": "",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2024-07-30T21:07:00.540Z",
+      "date_joined": "2024-07-16T06:58:20.717Z",
+      "email": "nomoder@sky.pro",
+      "phone": null,
+      "tg_nick": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$140EUaEHD3PVvHXaks9HVM$1H8COk48VSz09ssbL1KZdLT+3pJtRAabHRLmO+k4ZVI=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-16T07:05:05.558Z",
+      "email": "nomoder2@sky.pro",
+      "phone": null,
+      "tg_nick": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$zj549ov9jlbAtv2DiWUNEu$I4LS1iG3hD5bgH6MeEy0gRr3wsezGmyI5/DBBGgJVVU=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-16T07:25:42.342Z",
+      "email": "nomoder3@sky.pro",
+      "phone": null,
+      "tg_nick": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$WicRL1mqtLIdtfdk01gDih$FnEq4YOYpCX/r3gQWhMe6ppOFf8gOVIv+7WkTDVwJM4=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-07-31T06:46:02.523Z",
       "email": "shadowfish@yandex.ru",
       "phone": null,
       "tg_nick": null,
       "avatar": "",
       "groups": [],
       "user_permissions": []
+    }
+  },
+  {
+    "model": "users.donation",
+    "pk": 1,
+    "fields": {
+      "amount": 500,
+      "session_id": null,
+      "link": null,
+      "user": 2
+    }
+  },
+  {
+    "model": "users.donation",
+    "pk": 2,
+    "fields": {
+      "amount": 500,
+      "session_id": null,
+      "link": null,
+      "user": 2
+    }
+  },
+  {
+    "model": "users.donation",
+    "pk": 3,
+    "fields": {
+      "amount": 500,
+      "session_id": "cs_test_a1d5Z1Z0y7xufA2FCg6vkpN381fZSlWdD24Yu80UjM8mzOxfZnYdMzq7Cz",
+      "link": "https://checkout.stripe.com/c/pay/cs_test_a1d5Z1Z0y7xufA2FCg6vkpN381fZSlWdD24Yu80UjM8mzOxfZnYdMzq7Cz#fidkdWxOYHwnPyd1blpxYHZxWjA0VWJvPE1XdnU9N0wzaWBAUnx8YXN%2FcFNnTXJ9YXFVR24zbDdGQlxTRlRiNlxhMDVIcT1xS2hvfF9fXUxnZkl3PVdvfUpJbEwzbHFGZn9OR3R3aGZEPTNSNTU2YzRXUl1RcCcpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl",
+      "user": 2
+    }
+  },
+  {
+    "model": "users.donation",
+    "pk": 4,
+    "fields": {
+      "amount": 500,
+      "session_id": null,
+      "link": null,
+      "user": 2
     }
   }
 ]

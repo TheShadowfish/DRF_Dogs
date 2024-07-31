@@ -157,7 +157,7 @@ CELERY_TIMEZONE = 'UTC'
 CELERY_BEAT_SCHEDULE = {
     "send_email_about_birthday": {
         "task": "dogs.tasks.send_email_about_birthday",
-        "schedule": timedelta(days=1),  # Run every day at 00:00
+        "schedule": timedelta(seconds=1),  # Run every day at 00:00
     }
 }
 
@@ -173,4 +173,4 @@ SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Celery Beat settings
-CELERY_BEAT_SCHEDULE = "django_celery_beat.schedulers:DatabaseScheduler"
+# CELERY_BEAT_SCHEDULE = "django_celery_beat.schedulers:DatabaseScheduler"

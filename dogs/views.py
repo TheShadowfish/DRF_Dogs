@@ -36,10 +36,13 @@ class DogViewSet(ModelViewSet):
             return DogSerializerCreateUpdate
         return DogSerializer
 
+    # Дрянь абсолютная, отказывается работать. Ведет себя это ПО в зависимости от погоды на чертовом марсе, закономерности вообще не вижу!!!!
     def perform_create(self, serializer):
-        dog = serializer.save(owner=self.request.user)
-    #     dog.owner = self.request.user
-    #     dog.save()
+
+        print(str(self.request.user))
+        dog = serializer.save()
+        dog.owner = self.request.user
+        dog.save()
     # def perform_create(self, serializer):
     #     breed = serializer.save(owner=self.request.user)
     #     # breed.owner = self.request.user

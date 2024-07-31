@@ -1,1 +1,131 @@
-[{"model": "dogs.breed", "pk": 1, "fields": {"name": "Овчарка", "breed": "Умный большой собакен, грозен на вид, умеет 'Кусь'.", "owner": null}}, {"model": "dogs.dog", "pk": 1, "fields": {"owner": null, "name": "Лаки", "breed": null, "description": null, "photo": "", "date_born": "2024-03-03"}}, {"model": "dogs.dog", "pk": 2, "fields": {"owner": null, "name": "Лесси", "breed": 1, "description": null, "photo": "", "date_born": "2024-01-13"}}, {"model": "dogs.dog", "pk": 3, "fields": {"owner": null, "name": "Мухтар", "breed": 1, "description": null, "photo": "", "date_born": "2020-01-13"}}, {"model": "dogs.dog", "pk": 4, "fields": {"owner": null, "name": "Каска", "breed": 1, "description": null, "photo": "", "date_born": "2021-11-13"}}, {"model": "dogs.dog", "pk": 5, "fields": {"owner": null, "name": "Тополь", "breed": 1, "description": null, "photo": "", "date_born": "2021-11-03"}}, {"model": "dogs.dog", "pk": 6, "fields": {"owner": null, "name": "Кабысдох", "breed": null, "description": null, "photo": "", "date_born": "2022-07-03"}}, {"model": "dogs.dog", "pk": 7, "fields": {"owner": null, "name": "Кусака", "breed": null, "description": null, "photo": "", "date_born": "2022-07-05"}}, {"model": "dogs.dog", "pk": 8, "fields": {"owner": null, "name": "Чапа", "breed": null, "description": null, "photo": "", "date_born": "2023-07-05"}}, {"model": "dogs.dog", "pk": 9, "fields": {"owner": null, "name": "Капча", "breed": null, "description": null, "photo": "", "date_born": "2023-07-05"}}, {"model": "dogs.dog", "pk": 10, "fields": {"owner": null, "name": "Приблудыш", "breed": null, "description": null, "photo": "", "date_born": null}}]
+[
+  {
+    "model": "dogs.breed",
+    "pk": 1,
+    "fields": {
+      "name": "Овчарка",
+      "breed": "Умный большой собакен, грозен на вид, умеет 'Кусь'.",
+      "owner": null
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 1,
+    "fields": {
+      "owner": null,
+      "name": "Лаки",
+      "breed": null,
+      "description": null,
+      "photo": "",
+      "date_born": "2024-03-03"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 2,
+    "fields": {
+      "owner": null,
+      "name": "Лесси",
+      "breed": 1,
+      "description": null,
+      "photo": "",
+      "date_born": "2024-01-13"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 3,
+    "fields": {
+      "owner": null,
+      "name": "Мухтар",
+      "breed": 1,
+      "description": null,
+      "photo": "",
+      "date_born": "2020-01-13"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 4,
+    "fields": {
+      "owner": null,
+      "name": "Каска",
+      "breed": 1,
+      "description": null,
+      "photo": "",
+      "date_born": "2021-11-13"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 5,
+    "fields": {
+      "owner": null,
+      "name": "Тополь",
+      "breed": 1,
+      "description": null,
+      "photo": "",
+      "date_born": "2021-11-03"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 6,
+    "fields": {
+      "owner": null,
+      "name": "Кабысдох",
+      "breed": null,
+      "description": null,
+      "photo": "",
+      "date_born": "2022-07-03"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 7,
+    "fields": {
+      "owner": null,
+      "name": "Кусака",
+      "breed": null,
+      "description": null,
+      "photo": "",
+      "date_born": "2022-07-05"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 8,
+    "fields": {
+      "owner": null,
+      "name": "Чапа",
+      "breed": null,
+      "description": null,
+      "photo": "",
+      "date_born": "2023-07-05"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 9,
+    "fields": {
+      "owner": null,
+      "name": "Капча",
+      "breed": null,
+      "description": null,
+      "photo": "",
+      "date_born": "2023-07-05"
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 10,
+    "fields": {
+      "owner": null,
+      "name": "Приблудыш",
+      "breed": null,
+      "description": null,
+      "photo": "",
+      "date_born": null
+    }
+  }
+]
