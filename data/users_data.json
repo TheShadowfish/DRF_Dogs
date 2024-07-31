@@ -15,9 +15,7 @@
       "phone": null,
       "tg_nick": null,
       "avatar": "",
-      "groups": [
-        1
-      ],
+      "groups": [],
       "user_permissions": []
     }
   },
