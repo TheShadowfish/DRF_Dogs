@@ -17,7 +17,8 @@
       "breed": null,
       "description": null,
       "photo": "",
-      "date_born": "2024-03-03"
+      "date_born": "2024-03-03",
+      "likes": []
     }
   },
   {
@@ -29,7 +30,8 @@
       "breed": 1,
       "description": null,
       "photo": "",
-      "date_born": "2024-01-13"
+      "date_born": "2024-01-13",
+      "likes": []
     }
   },
   {
@@ -41,7 +43,8 @@
       "breed": 1,
       "description": null,
       "photo": "",
-      "date_born": "2020-01-13"
+      "date_born": "2020-01-13",
+      "likes": []
     }
   },
   {
@@ -53,7 +56,8 @@
       "breed": 1,
       "description": null,
       "photo": "",
-      "date_born": "2021-11-13"
+      "date_born": "2021-11-13",
+      "likes": []
     }
   },
   {
@@ -65,7 +69,8 @@
       "breed": 1,
       "description": null,
       "photo": "",
-      "date_born": "2021-11-03"
+      "date_born": "2021-11-03",
+      "likes": []
     }
   },
   {
@@ -77,7 +82,8 @@
       "breed": null,
       "description": null,
       "photo": "",
-      "date_born": "2022-07-03"
+      "date_born": "2022-07-03",
+      "likes": []
     }
   },
   {
@@ -89,7 +95,8 @@
       "breed": null,
       "description": null,
       "photo": "",
-      "date_born": "2022-07-05"
+      "date_born": "2022-07-05",
+      "likes": []
     }
   },
   {
@@ -101,7 +108,8 @@
       "breed": null,
       "description": null,
       "photo": "",
-      "date_born": "2023-07-05"
+      "date_born": "2023-07-05",
+      "likes": []
     }
   },
   {
@@ -113,7 +121,8 @@
       "breed": null,
       "description": null,
       "photo": "",
-      "date_born": "2023-07-05"
+      "date_born": "2023-07-05",
+      "likes": []
     }
   },
   {
@@ -125,7 +134,34 @@
       "breed": null,
       "description": null,
       "photo": "",
-      "date_born": null
+      "date_born": null,
+      "likes": []
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 11,
+    "fields": {
+      "owner": null,
+      "name": "Шедоу",
+      "breed": null,
+      "description": null,
+      "photo": "",
+      "date_born": "2024-07-31",
+      "likes": []
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 12,
+    "fields": {
+      "owner": 6,
+      "name": "Шедоу",
+      "breed": null,
+      "description": null,
+      "photo": "",
+      "date_born": "2024-07-31",
+      "likes": []
     }
   }
 ]

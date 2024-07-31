@@ -73,31 +73,31 @@ class User(AbstractUser):
 
 class Donation(models.Model):
     amount = models.PositiveIntegerField(
-        verbose_name='Сумма пожертвования',
-        help_text='Укажите сумму пожертвования'
+        verbose_name="Сумма пожертвования", help_text="Укажите сумму пожертвования"
     )
     session_id = models.CharField(
         max_length=255,
         blank=True,
         null=True,
-        verbose_name='ID сессии',
-        help_text='Укажите ID сессиии'
+        verbose_name="ID сессии",
+        help_text="Укажите ID сессиии",
     )
     link = models.URLField(
         max_length=400,
         blank=True,
         null=True,
-        verbose_name='Ссылка на оплату',
-        help_text='Укажите ссылку на оплату'
+        verbose_name="Ссылка на оплату",
+        help_text="Укажите ссылку на оплату",
     )
-    user =  models.ForeignKey(
+    user = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        verbose_name='Пользователь',
-        help_text='Укажите пользователя'
+        verbose_name="Пользователь",
+        help_text="Укажите пользователя",
     )
+
     class Meta:
         verbose_name = "Пожертвование"
         verbose_name_plural = "Пожертвования"

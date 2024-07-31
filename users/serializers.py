@@ -10,6 +10,7 @@ class UserSerializer(ModelSerializer):
         # если ограничить поля то пользователь создается некорректно и зайти под ним нельзя. ХЗ что с этим делать. Пароль ДОЛЖЕН БЫТЬ в выводе.
         #  ('id', 'email', 'phone', 'tg_nick', 'avatar', 'groups', 'user_permissions', 'is_superuser', 'is_staff',)
 
+
 class DonationSerializer(ModelSerializer):
     class Meta:
         model = Donation

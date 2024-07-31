@@ -4,7 +4,11 @@ from rest_framework.permissions import AllowAny
 
 from users.models import User, Donation
 from users.serializers import UserSerializer, DonationSerializer
-from users.services import convert_rub_to_dollars, create_stripe_price, create_stripe_session
+from users.services import (
+    convert_rub_to_dollars,
+    create_stripe_price,
+    create_stripe_session,
+)
 
 
 # Create your views here.

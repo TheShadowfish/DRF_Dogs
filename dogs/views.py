@@ -6,28 +6,47 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView, \
-    get_object_or_404
+from rest_framework.generics import (
+    ListAPIView,
+    CreateAPIView,
+    RetrieveAPIView,
+    UpdateAPIView,
+    DestroyAPIView,
+    get_object_or_404,
+)
 
 from dogs.models import Dog, Breed
 from dogs.paginations import CustomPagination
-from dogs.serializers import DogSerializer, BreedSerializer, DogDetailSerializer, DogSerializerCreateUpdate
+from dogs.serializers import (
+    DogSerializer,
+    BreedSerializer,
+    DogDetailSerializer,
+    DogSerializerCreateUpdate,
+)
 from dogs.tasks import send_information_about_like
 from users.permissions import IsModer, IsOwner
 
 
-
-
-@method_decorator(name='list', decorator=swagger_auto_schema(
-    operation_description="description from swagger_auto_schema via method_decorator"
-))
+@method_decorator(
+    name="list",
+    decorator=swagger_auto_schema(
+        operation_description="description from swagger_auto_schema via method_decorator"
+    ),
+)
 class DogViewSet(ModelViewSet):
     queryset = Dog.objects.all()
-    filterset_fields = ('breed',)
-    filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
-    ordering_fields = ('date_born',)
-    search_fields = ('name',)
+    filterset_fields = ("breed",)
+    filter_backends = [
+        DjangoFilterBackend,
+        filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
+    ordering_fields = ("date_born",)
+    search_fields = ("name",)
     pagination_class = CustomPagination
+
+    def perform_create(self, serializer):
+        dog = serializer.save(owner=self.request.user)
 
     def get_serializer_class(self):
         if self.action == "retrieve":
@@ -35,12 +54,6 @@ class DogViewSet(ModelViewSet):
         if self.action in ["create", "update"]:
             return DogSerializerCreateUpdate
         return DogSerializer
-
-
-    def perform_create(self, serializer):
-        dog = serializer.save(owner=self.request.user)
-        # breed.owner = self.request.user
-        # breed.save()
 
     def get_permissions(self):
         if self.action == "create":
@@ -50,7 +63,6 @@ class DogViewSet(ModelViewSet):
         elif self.action == "destroy":
             self.permission_classes = (~IsModer | IsOwner,)
         return super().get_permissions()
-
 
         # почему-то удалять отказывался собаку у простого пользователя (не модератора)
         # а создавал без проблем

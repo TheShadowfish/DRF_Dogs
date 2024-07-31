@@ -28,6 +28,7 @@ class DogSerializer(serializers.ModelSerializer):
 class DogSerializerCreateUpdate(serializers.ModelSerializer):
 
     name = serializers.CharField(validators=[validate_forbidden_words])
+
     class Meta:
         model = Dog
         fields = "__all__"
@@ -43,4 +44,11 @@ class DogDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Dog
-        fields = ('name', 'breed', 'description', 'photo', 'date_born', 'count_dog_with_same_breed')
+        fields = (
+            "name",
+            "breed",
+            "description",
+            "photo",
+            "date_born",
+            "count_dog_with_same_breed",
+        )

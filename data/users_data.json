@@ -15,7 +15,9 @@
       "phone": null,
       "tg_nick": null,
       "avatar": "",
-      "groups": [],
+      "groups": [
+        1
+      ],
       "user_permissions": []
     }
   },
@@ -24,7 +26,7 @@
     "pk": 2,
     "fields": {
       "password": "pbkdf2_sha256$600000$drf1txIBhlC0nHeUk6R77E$6NB91+cIpOBXK1lm99B8NVJcAIH4g8dty97Vw3l2rlI=",
-      "last_login": "2024-07-15T13:33:49.336Z",
+      "last_login": "2024-07-31T07:18:29.436Z",
       "is_superuser": true,
       "first_name": "Admin",
       "last_name": "SkyPro",
