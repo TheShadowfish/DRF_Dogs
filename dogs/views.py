@@ -37,10 +37,10 @@ class DogViewSet(ModelViewSet):
         return DogSerializer
 
 
-    # def perform_create(self, serializer):
-    #     breed = serializer.save(owner=self.request.user)
-    #     # breed.owner = self.request.user
-    #     # breed.save()
+    def perform_create(self, serializer):
+        breed = serializer.save(owner=self.request.user)
+        # breed.owner = self.request.user
+        # breed.save()
 
     def get_permissions(self):
         if self.action == "create":
@@ -63,14 +63,6 @@ class DogViewSet(ModelViewSet):
         # elif self.action != "create":
         #     self.permission_classes = (IsOwner,)
         # return super().get_permissions()
-    # Дрянь абсолютная, отказывается работать. Ведет себя это ПО в зависимости от погоды на чертовом марсе, закономерности вообще не вижу!!!!
-    def perform_create(self, serializer):
-        dog = serializer.save(owner=self.request.user)
-
-        print(str(self.request.user))
-        # dog = serializer.save()
-        # dog.owner = self.request.user
-        # dog.save()
 
     @action(detail=True, methods=("post",))
     def likes(self, request, pk):
