@@ -1,14 +1,10 @@
 from django.urls import path
 from rest_framework.routers import SimpleRouter
+
 from dogs.apps import DogsConfig
-from dogs.views import (
-    DogViewSet,
-    BreedCreateAPIView,
-    BreedListAPIView,
-    BreedUpdateAPIView,
-    BreedRetrieveAPIView,
-    BreedDestroyAPIView,
-)
+from dogs.views import (BreedCreateAPIView, BreedDestroyAPIView,
+                        BreedListAPIView, BreedRetrieveAPIView,
+                        BreedUpdateAPIView, DogViewSet)
 
 router = SimpleRouter()
 router.register("", DogViewSet)

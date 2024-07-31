@@ -1,7 +1,7 @@
-from rest_framework.fields import SerializerMethodField
 from rest_framework import serializers
+from rest_framework.fields import SerializerMethodField
 
-from dogs.models import Dog, Breed
+from dogs.models import Breed, Dog
 from dogs.validators import validate_forbidden_words
 
 

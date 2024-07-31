@@ -1,8 +1,8 @@
 import os.path
 from datetime import timedelta
 from pathlib import Path
-from decouple import config
 
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -154,7 +154,7 @@ CELERY_TIMEZONE = "UTC"
 CELERY_BEAT_SCHEDULE = {
     "send_email_about_birthday": {
         "task": "dogs.tasks.send_email_about_birthday",
-        "schedule": timedelta(seconds=1),  # Run every day at 00:00
+        "schedule": timedelta(days=1),  # Run every day at 00:00
     }
 }
 

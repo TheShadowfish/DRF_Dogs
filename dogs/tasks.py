@@ -1,9 +1,8 @@
 from celery import shared_task
+from django.core.mail import send_mail
 from django.utils import timezone
 
 from config.settings import EMAIL_HOST_USER
-from django.core.mail import send_mail
-
 from dogs.models import Dog
 
 

@@ -21,6 +21,7 @@ forex-python = "^1.8"
 celery = "^5.4.0"
 redis = "^5.0.8"
 django-celery-beat = "^2.6.0"
+isort = "^5.13.2"
 
 
 [tool.poetry.group.dev.dependencies]

@@ -3,26 +3,17 @@ from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import filters
 from rest_framework.decorators import action
+from rest_framework.generics import (CreateAPIView, DestroyAPIView,
+                                     ListAPIView, RetrieveAPIView,
+                                     UpdateAPIView, get_object_or_404)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.generics import (
-    ListAPIView,
-    CreateAPIView,
-    RetrieveAPIView,
-    UpdateAPIView,
-    DestroyAPIView,
-    get_object_or_404,
-)
 
-from dogs.models import Dog, Breed
+from dogs.models import Breed, Dog
 from dogs.paginations import CustomPagination
-from dogs.serializers import (
-    DogSerializer,
-    BreedSerializer,
-    DogDetailSerializer,
-    DogSerializerCreateUpdate,
-)
+from dogs.serializers import (BreedSerializer, DogDetailSerializer,
+                              DogSerializer, DogSerializerCreateUpdate)
 from dogs.tasks import send_information_about_like
 from users.permissions import IsModer, IsOwner
 
