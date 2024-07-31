@@ -38,7 +38,7 @@ class DogViewSet(ModelViewSet):
 
 
     def perform_create(self, serializer):
-        breed = serializer.save(owner=self.request.user)
+        dog = serializer.save(owner=self.request.user)
         # breed.owner = self.request.user
         # breed.save()
 
