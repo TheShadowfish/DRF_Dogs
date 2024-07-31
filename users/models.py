@@ -53,6 +53,13 @@ class User(AbstractUser):
         verbose_name="Tg name",
         help_text="Укажите telegram-ник",
     )
+
+    tg_chat_id = models.CharField(
+        max_length=50,
+        **NULLABLE,
+        verbose_name='Телеграм chat-id',
+        help_text='Укажите телеграм chat-id'
+    )
     avatar = models.ImageField(
         upload_to="users/avatars",
         **NULLABLE,
@@ -97,6 +104,7 @@ class Donation(models.Model):
         verbose_name="Пользователь",
         help_text="Укажите пользователя",
     )
+
 
     class Meta:
         verbose_name = "Пожертвование"

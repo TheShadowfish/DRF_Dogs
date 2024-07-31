@@ -131,7 +131,7 @@ REST_FRAMEWORK = {
 }
 #  'rest_framework.permissions.IsAuthenticated',
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=2),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
@@ -171,3 +171,5 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Celery Beat settings
 # CELERY_BEAT_SCHEDULE = "django_celery_beat.schedulers:DatabaseScheduler"
+TELEGRAM_URL ="https://api.telegram.org/bot"
+TELEGRAM_TOKEN = config('TELEGRAM_TOKEN')
