@@ -68,11 +68,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("DB_POSTRESQL_NAME"),
-        "USER": config("DB_POSTRESQL_USER"),
-        "HOST": config("DB_POSTRESQL_HOST"),
-        "PORT": config("DB_POSTRESQL_PORT"),
-        "PASSWORD": config("DB_POSTRESQL_PASSWORD"),
+        "NAME": config("POSTGRES_DB"),
+        "USER": config("POSTGRES_USER"),
+        "HOST": config("POSTGRES_HOST"),
+        "PORT": config("POSTGRES_PORT"),
+        "PASSWORD": config("POSTGRES_PASSWORD"),
     }
 }
 
@@ -148,8 +148,6 @@ CELERY_BROKER_URL = config("CELERY_BROKER_URL")
 # set the celery result backend
 CELERY_RESULT_BACKEND = config("CELERY_RESULT_BACKEND")
 
-# set the celery timezone
-CELERY_TIMEZONE = "UTC"
 
 CELERY_BEAT_SCHEDULE = {
     "send_email_about_birthday": {
