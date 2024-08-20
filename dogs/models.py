@@ -19,7 +19,7 @@ class Breed(models.Model):
         on_delete=models.SET_NULL,
         **NULLABLE,
         verbose_name="Владелец",
-        help_text="Укажите владельца"
+        help_text="Укажите владельца",
     )
 
     class Meta:
@@ -37,7 +37,7 @@ class Dog(models.Model):
         on_delete=models.SET_NULL,
         **NULLABLE,
         verbose_name="Владелец",
-        help_text="Укажите владельца собаки"
+        help_text="Укажите владельца собаки",
     )
 
     name = models.CharField(
@@ -49,7 +49,7 @@ class Dog(models.Model):
         verbose_name="Порода",
         help_text="Введите породу собаки",
         **NULLABLE,
-        related_name="dogs"
+        related_name="dogs",
     )
     description = models.TextField(
         verbose_name="Описание собаки", help_text="Введите описание собаки", **NULLABLE
@@ -58,10 +58,17 @@ class Dog(models.Model):
         upload_to="dogs/photo",
         verbose_name="Фото",
         help_text="Загрузите фото собаки",
-        **NULLABLE
+        **NULLABLE,
     )
     date_born = models.DateField(
         **NULLABLE, verbose_name="Дата рождения", help_text="Укажите дату рождения"
+    )
+    likes = models.ManyToManyField(
+        User,
+        **NULLABLE,
+        verbose_name="Лайки",
+        help_text="Укажите лайки",
+        related_name="user_likes",
     )
 
     class Meta:

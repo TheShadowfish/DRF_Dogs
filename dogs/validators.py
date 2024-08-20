@@ -1,6 +1,14 @@
 from rest_framework.exceptions import ValidationError
 
-forbidden_words = ['ставки', 'крипта', 'продам', 'гараж', 'знакомства', 'порно', 'казино']
+forbidden_words = [
+    "ставки",
+    "крипта",
+    "продам",
+    "гараж",
+    "знакомства",
+    "порно",
+    "казино",
+]
 
 
 def validate_forbidden_words(value):

@@ -1,8 +1,8 @@
 import os.path
 from datetime import timedelta
 from pathlib import Path
-from decouple import config
 
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -11,7 +11,7 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG") == "True"
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -22,13 +22,14 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",
+    "django.contrib.staticfiles",  # required for serving swagger ui's css/js files
     "rest_framework",
     "users",
     "dogs",
     "django_filters",
-    'rest_framework_simplejwt',
-
+    "rest_framework_simplejwt",
+    "drf_yasg",
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -67,11 +68,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("DB_POSTRESQL_NAME"),
-        "USER": config("DB_POSTRESQL_USER"),
-        "HOST": config("DB_POSTRESQL_HOST"),
-        "PORT": config("DB_POSTRESQL_PORT"),
-        "PASSWORD": config("DB_POSTRESQL_PASSWORD"),
+        "NAME": config("POSTGRES_DB"),
+        "USER": config("POSTGRES_USER"),
+        "HOST": config("POSTGRES_HOST"),
+        "PORT": config("POSTGRES_PORT"),
+        "PASSWORD": config("POSTGRES_PASSWORD"),
     }
 }
 
@@ -120,18 +121,53 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ]
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
 }
 #  'rest_framework.permissions.IsAuthenticated',
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=2),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
+
+STRIPE_API_KEY = config("STRIPE_API_KEY")
+
+# Celery Configuration Options
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+# set the celery broker url
+CELERY_BROKER_URL = config("CELERY_BROKER_URL")
+
+# set the celery result backend
+CELERY_RESULT_BACKEND = config("CELERY_RESULT_BACKEND")
+
+
+CELERY_BEAT_SCHEDULE = {
+    "send_email_about_birthday": {
+        "task": "dogs.tasks.send_email_about_birthday",
+        "schedule": timedelta(days=1),  # Run every day at 00:00
+    }
+}
+
+
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_PORT = config("EMAIL_PORT")
+EMAIL_HOST_USER = config("EMAIL_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_PASSWORD")
+EMAIL_USE_TLS = config("EMAIL_USE_TLS") == "True"
+EMAIL_USE_SSL = config("EMAIL_USE_SSL") == "True"
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# Celery Beat settings
+# CELERY_BEAT_SCHEDULE = "django_celery_beat.schedulers:DatabaseScheduler"
+TELEGRAM_URL ="https://api.telegram.org/bot"
+TELEGRAM_TOKEN = config('TELEGRAM_TOKEN')
